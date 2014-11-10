@@ -1,0 +1,26 @@
+<p>
+  {{link-to "Team list" "teams.index" }}
+</p>
+
+<h1>
+  {{#if logo}}
+    <img {{bind-attr src="logo" alt="name"}} />
+  {{/if}}
+  {{name}}
+</h1>
+
+<h2>Players</h2>
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+  </tr>
+  {{#each players}}
+    <tr>
+      <td>{{number}}</td>
+      <td>{{#link-to 'players.show' this}}{{lastName}}{{/link-to}}</td>
+      <td>{{firstName}}</td>
+    </tr>
+  {{/each}}
+</table>

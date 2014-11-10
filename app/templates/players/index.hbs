@@ -1,0 +1,57 @@
+<h1>Players list</h1>
+
+<p>
+  {{link-to "New Player" "players.new" }}
+</p>
+
+{{#if controller.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>
+          First name
+        </th>
+        <th>
+          Last name
+        </th>
+        <th>
+          Team
+        </th>
+        <th>
+          Number
+        </th>
+        <th colspan="2">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each player in controller}}
+        <tr>
+          <td>
+            {{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}
+          </td>
+          <td>
+            {{player.lastName}}
+          </td>
+          <td>
+            {{#link-to 'teams.show' player.team}}{{player.team.name}}{{/link-to}}
+          </td>
+          <td>
+            {{player.number}}
+          </td>
+          <td>
+            {{link-to "Edit" "players.edit" player}}
+          </td>
+          <td>
+            <a href="#" {{action "remove" player}}>Remove</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Players found
+  </p>
+{{/if}}

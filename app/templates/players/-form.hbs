@@ -1,0 +1,43 @@
+<form {{action "save" on="submit"}}>
+  <div>
+    <label>
+      First name
+      {{input type="text" value=firstName}}
+    </label>
+  </div>
+  <div>
+    <label>
+      Last name
+      {{input type="text" value=lastName}}
+    </label>
+  </div>
+  <div>
+    <label>
+      Team
+      {{view 'select'
+        content=teams
+        valueBinding=team.content
+        optionLabelPath="content.name"
+        prompt="Select a team"
+      }}
+    </label>
+  </div>
+  <div>
+    <label>
+      Number
+      {{input type="text" value=number}}
+    </label>
+  </div>
+  <div>
+    {{#if headshot}}
+      <img {{bind-attr src="headshot" alt="name"}} />
+    {{/if}}
+    <label>
+      Image
+      {{image-upload imageSource=headshot}}
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Save">
+  </div>
+</form>

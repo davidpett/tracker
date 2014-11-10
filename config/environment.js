@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'tracker',
     environment: environment,
     baseURL: '/',
+    firebase_instance: 'matchtracker',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
