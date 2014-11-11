@@ -1,8 +1,10 @@
 <h1>Players list</h1>
 
-<p>
-  {{link-to "New Player" "players.new" }}
-</p>
+{{#if session.isAuthenticated}}
+  <p>
+    {{link-to "New Player" "players.new" }}
+  </p>
+{{/if}}
 
 {{#if controller.length}}
   <table>
@@ -20,9 +22,11 @@
         <th>
           Number
         </th>
-        <th colspan="2">
-          Actions
-        </th>
+        {{#if session.isAuthenticated}}
+          <th colspan="2">
+            Actions
+          </th>
+        {{/if}}
       </tr>
     </thead>
     <tbody>
@@ -40,12 +44,14 @@
           <td>
             {{player.number}}
           </td>
-          <td>
-            {{link-to "Edit" "players.edit" player}}
-          </td>
-          <td>
-            <a href="#" {{action "remove" player}}>Remove</a>
-          </td>
+          {{#if session.isAuthenticated}}
+            <td>
+              {{link-to "Edit" "players.edit" player}}
+            </td>
+            <td>
+              <a href="#" {{action "remove" player}}>Remove</a>
+            </td>
+          {{/if}}
         </tr>
       {{/each}}
     </tbody>

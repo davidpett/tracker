@@ -1,8 +1,10 @@
 <h1>Teams list</h1>
 
-<p>
-  {{link-to "New Team" "teams.new" }}
-</p>
+{{#if session.isAuthenticated}}
+  <p>
+    {{link-to "New Team" "teams.new" }}
+  </p>
+{{/if}}
 
 {{#if controller.length}}
   <table>
@@ -17,9 +19,11 @@
         <th>
           Conference
         </th>
-        <th colspan="2">
-          Actions
-        </th>
+        {{#if session.isAuthenticated}}
+          <th colspan="2">
+            Actions
+          </th>
+        {{/if}}
       </tr>
     </thead>
     <tbody>
@@ -34,12 +38,14 @@
           <td>
             {{team.conference.name}}
           </td>
-          <td>
-            {{link-to "Edit" "teams.edit" team}}
-          </td>
-          <td>
-            <a href="#" {{action "remove" team}}>Remove</a>
-          </td>
+          {{#if session.isAuthenticated}}
+            <td>
+              {{link-to "Edit" "teams.edit" team}}
+            </td>
+            <td>
+              <a href="#" {{action "remove" team}}>Remove</a>
+            </td>
+          {{/if}}
         </tr>
       {{/each}}
     </tbody>
