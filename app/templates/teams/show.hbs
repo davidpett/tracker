@@ -2,6 +2,12 @@
   {{link-to "Team list" "teams.index" }}
 </p>
 
+{{#if session.isAuthenticated}}
+  <p>
+    {{link-to "Edit" "teams.edit" this}}
+  </p>
+{{/if}}
+
 <h1>
   {{#if logo}}
     <img {{bind-attr src="logo" alt="name"}} />
@@ -21,6 +27,24 @@
       <td>{{number}}</td>
       <td>{{#link-to 'players.show' this}}{{lastName}}{{/link-to}}</td>
       <td>{{firstName}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+<h2>Matches</h2>
+<table>
+  <tr>
+    <th>Home</th>
+    <th>Away</th>
+  </tr>
+  {{#each matches}}
+    <tr>
+      <td>
+        {{#link-to 'teams.show' home}}{{home.name}}{{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'teams.show' away}}{{away.name}}{{/link-to}}
+      </td>
     </tr>
   {{/each}}
 </table>

@@ -2,6 +2,12 @@
   {{link-to "Player list" "players.index" }}
 </p>
 
+{{#if session.isAuthenticated}}
+  <p>
+    {{link-to "Edit" "players.edit" this}}
+  </p>
+{{/if}}
+
 <h1>
   {{#if headshot}}
     <img {{bind-attr src="headshot" alt="name"}} />

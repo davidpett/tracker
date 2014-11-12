@@ -1,0 +1,26 @@
+<p>
+  {{link-to "Match list" "matches.index" }}
+</p>
+
+{{#if session.isAuthenticated}}
+  <p>
+    {{link-to "Edit" "matches.edit" this}}
+  </p>
+{{/if}}
+
+<h1>Match show</h1>
+
+<p>
+  <strong>Home:</strong>
+  <span>{{#link-to 'teams.show' home}}{{home.name}}{{/link-to}}</span>
+</p>
+
+<p>
+  <strong>Away:</strong>
+  <span>{{#link-to 'teams.show' away}}{{away.name}}{{/link-to}}</span>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <span>{{date}}</span>
+</p>

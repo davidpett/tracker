@@ -5,7 +5,7 @@ export default Ember.Mixin.create({
     this._super(transition);
     if (!this.get('session.isAuthenticated')) {
       transition.abort();
-      this.transitionTo('index');
+      this.transitionTo(this.routeName.split('.')[0]);
     }
   }
 });

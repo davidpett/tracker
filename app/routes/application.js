@@ -7,6 +7,9 @@ export default Ember.Route.extend({
     this.store.findAll('conference').then(function(data) {
       controller.set('conferences', data);
     });
+    this.store.findAll('match').then(function(data) {
+      controller.set('matches', data);
+    });
     this.store.findAll('player').then(function(data) {
       controller.set('players', data);
     });

@@ -1,8 +1,8 @@
-<h1>Teams list</h1>
+<h1>Matches list</h1>
 
 {{#if session.isAuthenticated}}
   <p>
-    {{link-to "New Team" "teams.new" }}
+    {{link-to "New Match" "matches.new" }}
   </p>
 {{/if}}
 
@@ -11,13 +11,13 @@
     <thead>
       <tr>
         <th>
-          Logo
+          Home
         </th>
         <th>
-          Name
+          Away
         </th>
         <th>
-          Conference
+          Date
         </th>
         {{#if session.isAuthenticated}}
           <th>
@@ -27,21 +27,21 @@
       </tr>
     </thead>
     <tbody>
-      {{#each team in controller}}
+      {{#each match in controller}}
         <tr>
           <td>
-            <img {{bind-attr src="team.logo" alt="team.name"}} />
+            {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
           </td>
           <td>
-            {{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}
+            {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
           </td>
           <td>
-            {{team.conference.name}}
+            {{match.date}}
           </td>
           {{#if session.isAuthenticated}}
             <td>
-              {{link-to "Edit" "teams.edit" team}}
-              <a href="#" {{action "remove" team}}>Remove</a>
+              {{link-to "Edit" "matches.edit" match}}
+              <a href="#" {{action "remove" match}}>Remove</a>
             </td>
           {{/if}}
         </tr>
@@ -50,6 +50,6 @@
   </table>
 {{else}}
   <p id="blankslate">
-    No Teams found
+    No Matches found
   </p>
 {{/if}}

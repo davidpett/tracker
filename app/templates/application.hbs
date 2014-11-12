@@ -1,9 +1,16 @@
 <header>
-  {{#if session.isAuthenticated}}
-    <a href="#" {{action 'logout'}}>Logout</a>
-  {{else}}
-    <a href="#" {{action 'login' 'github'}}>Login</a>
-  {{/if}}
+  <ul>
+    <li>{{link-to 'Matches' 'matches'}}</li>
+    <li>{{link-to 'Teams' 'teams'}}</li>
+    <li>{{link-to 'Players' 'players'}}</li>
+    <li>
+      {{#if session.isAuthenticated}}
+        <a href="#" {{action 'logout'}}>Logout</a>
+      {{else}}
+        <a href="#" {{action 'login'}}>Login</a>
+      {{/if}}
+    </li>
+  </ul>
 </header>
 
 {{liquid-outlet}}
