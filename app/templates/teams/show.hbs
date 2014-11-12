@@ -34,11 +34,15 @@
 <h2>Matches</h2>
 <table>
   <tr>
+    <th>Date</th>
     <th>Home</th>
     <th>Away</th>
   </tr>
   {{#each matches}}
     <tr>
+      <td>
+        {{#link-to 'matches.show' this}}{{formattedDate}}{{/link-to}}
+      </td>
       <td>
         {{#link-to 'teams.show' home}}{{home.name}}{{/link-to}}
       </td>

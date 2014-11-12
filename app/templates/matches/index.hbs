@@ -11,13 +11,13 @@
     <thead>
       <tr>
         <th>
+          Date
+        </th>
+        <th>
           Home
         </th>
         <th>
           Away
-        </th>
-        <th>
-          Date
         </th>
         {{#if session.isAuthenticated}}
           <th>
@@ -30,13 +30,13 @@
       {{#each match in controller}}
         <tr>
           <td>
+            {{#link-to 'matches.show' match}}{{match.formattedDate}}{{/link-to}}
+          </td>
+          <td>
             {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
           </td>
           <td>
             {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
-          </td>
-          <td>
-            {{match.date}}
           </td>
           {{#if session.isAuthenticated}}
             <td>

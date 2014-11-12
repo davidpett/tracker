@@ -11,6 +11,11 @@
 <h1>Match show</h1>
 
 <p>
+  <strong>Date:</strong>
+  <span>{{formattedDate}}</span>
+</p>
+
+<p>
   <strong>Home:</strong>
   <span>{{#link-to 'teams.show' home}}{{home.name}}{{/link-to}}</span>
 </p>
@@ -18,9 +23,4 @@
 <p>
   <strong>Away:</strong>
   <span>{{#link-to 'teams.show' away}}{{away.name}}{{/link-to}}</span>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <span>{{date}}</span>
 </p>
