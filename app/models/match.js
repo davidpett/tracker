@@ -8,6 +8,6 @@ export default DS.Model.extend({
   date: DS.attr('date'),
 
   formattedDate: function() {
-    return moment(this.get('date')).format('MMMM Do YYYY, h:mm a');
+    return moment(this.get('date')).format('L h:mm a');
   }.property('date')
 });
