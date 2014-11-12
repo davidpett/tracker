@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
+export default Ember.Route.extend({
   setupController: function(controller, model) {
     this._super(controller, model);
 
@@ -14,5 +13,15 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.store.findAll('team').then(function(data) {
       controller.set('teams', data);
     });
+  },
+
+
+  actions: {
+    login: function() {
+      this.controllerFor('application').set('login', true);
+    },
+    logout: function() {
+      this.get('session').logout();
+    }
   }
 });

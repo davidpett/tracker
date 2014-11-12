@@ -1,9 +1,11 @@
 <header>
   {{#if session.isAuthenticated}}
-    <a href="#" {{action 'invalidateSession'}}>Logout</a>
+    <a href="#" {{action 'logout'}}>Logout</a>
   {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
+    <a href="#" {{action 'login' 'github'}}>Login</a>
   {{/if}}
 </header>
 
-{{outlet}}
+{{liquid-outlet}}
+
+{{liquid-modal}}

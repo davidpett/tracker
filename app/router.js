@@ -6,17 +6,19 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+
+  this.modal('login-modal', {withParams: 'login'})
+
   this.resource('teams', function() {
     this.route('new');
-    this.route('edit', { path: ':team_id/edit' });
-    this.route('show', { path: ':team_id' });
+    this.route('edit', {path: ':team_id/edit'});
+    this.route('show', {path: ':team_id'});
   });
   this.resource('players', function() {
     this.route('new');
-    this.route('edit', { path: ':player_id/edit' });
-    this.route('show', { path: ':player_id' });
+    this.route('edit', {path: ':player_id/edit'});
+    this.route('show', {path: ':player_id'});
   });
-  this.route('login');
 });
 
 export default Router;
