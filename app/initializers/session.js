@@ -19,15 +19,24 @@ var session = Ember.Object.extend({
   },
 
 
-  login: function(provider) {
+  login: function(provider, user) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      firebase.authWithOAuthPopup('github', function(error, authData) {
+
+      function handleAuth(error, authData) {
         if (error) {
           reject(error);
         } else {
           resolve(authData);
         }
-      });
+      }
+
+      if (provider === 'email') {
+        firebase.authWithPassword(user, handleAuth);
+      } else {
+        firebase.authWithOAuthPopup(provider, handleAuth, {
+          scope: 'email'
+        });
+      }
     });
   },
   logout: function() {

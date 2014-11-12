@@ -1,1 +1,15 @@
-<a href="#" {{action 'login'}}>Login</a>
+<form {{action 'login' 'email'}}>
+  {{input
+    type="text"
+    value=email
+    placeholder="email"
+  }}
+  {{input
+    type="password"
+    value=password
+  }}
+
+  <input type="submit" value="Login">
+</form>
+
+<a href="#" {{action 'login' 'github'}}>Login with github</a>
