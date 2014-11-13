@@ -22,7 +22,7 @@
     <th>Last Name</th>
     <th>First Name</th>
   </tr>
-  {{#each players}}
+  {{#each sortedPlayers}}
     <tr>
       <td>{{number}}</td>
       <td>{{#link-to 'players.show' this}}{{lastName}}{{/link-to}}</td>
@@ -38,7 +38,7 @@
     <th>Home</th>
     <th>Away</th>
   </tr>
-  {{#each matches}}
+  {{#each sortedMatches}}
     <tr>
       <td>
         {{#link-to 'matches.show' this}}{{formattedDate}}{{/link-to}}
