@@ -1,0 +1,39 @@
+<table>
+  <tr>
+    <th>
+      <a href="#" {{action 'sortBy' 'number'}}>Number</a>
+    </th>
+    <th>
+      <a href="#" {{action 'sortBy' 'lastName'}}>Last Name</a>
+    </th>
+    <th>
+      <a href="#" {{action 'sortBy' 'firstName'}}>First Name</a>
+    </th>
+    {{#if hasTeam}}
+      <th>
+        <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
+      </th>
+    {{/if}}
+    {{#if session.isAuthenticated}}
+      <th>
+        Actions
+      </th>
+    {{/if}}
+  </tr>
+  {{#each player in sortedPlayers}}
+    <tr>
+      <td>{{player.number}}</td>
+      <td>{{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}</td>
+      <td>{{player.firstName}}</td>
+      {{#if hasTeam}}
+        <td>{{player.team.name}}</td>
+      {{/if}}
+      {{#if session.isAuthenticated}}
+        <td>
+          {{link-to 'Edit' 'players.edit' player}}
+          <a href="#" {{action 'remove' player}}>Remove</a>
+        </td>
+      {{/if}}
+    </tr>
+  {{/each}}
+</table>

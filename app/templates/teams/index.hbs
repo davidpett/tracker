@@ -14,10 +14,10 @@
           Logo
         </th>
         <th>
-          Name
+          <a href="#" {{action 'sortBy' 'name'}}>Team</a>
         </th>
         <th>
-          Conference
+          <a href="#" {{action 'sortBy' 'conference.name'}}>Conference</a>
         </th>
         {{#if session.isAuthenticated}}
           <th>
@@ -41,7 +41,7 @@
           {{#if session.isAuthenticated}}
             <td>
               {{link-to "Edit" "teams.edit" team}}
-              <a href="#" {{action "remove" team}}>Remove</a>
+              <a href="#" {{action 'remove' team}}>Remove</a>
             </td>
           {{/if}}
         </tr>

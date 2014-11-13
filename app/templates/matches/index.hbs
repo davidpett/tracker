@@ -41,7 +41,7 @@
           {{#if session.isAuthenticated}}
             <td>
               {{link-to "Edit" "matches.edit" match}}
-              <a href="#" {{action "remove" match}}>Remove</a>
+              <a href="#" {{action 'remove' match}}>Remove</a>
             </td>
           {{/if}}
         </tr>

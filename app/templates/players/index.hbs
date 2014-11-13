@@ -11,16 +11,16 @@
     <thead>
       <tr>
         <th>
-          Last name
+          <a href="#" {{action 'sortBy' 'lastName'}}>Last name</a>
         </th>
         <th>
-          First name
+          <a href="#" {{action 'sortBy' 'firstName'}}>First name</a>
         </th>
         <th>
-          Team
+          <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
         </th>
         <th>
-          Number
+          <a href="#" {{action 'sortBy' 'number'}}>Number</a>
         </th>
         {{#if session.isAuthenticated}}
           <th>
@@ -47,7 +47,7 @@
           {{#if session.isAuthenticated}}
             <td>
               {{link-to "Edit" "players.edit" player}}
-              <a href="#" {{action "remove" player}}>Remove</a>
+              <a href="#" {{action 'remove' player}}>Remove</a>
             </td>
           {{/if}}
         </tr>
