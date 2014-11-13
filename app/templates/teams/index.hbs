@@ -1,55 +1,14 @@
-<h1>Teams list</h1>
+<div class="row">
+  <h1>Teams</h1>
 
-{{#if session.isAuthenticated}}
-  <p>
-    {{link-to "New Team" "teams.new" }}
-  </p>
-{{/if}}
+  {{#if session.isAuthenticated}}
+    <p>
+      {{link-to "New Team" "teams.new" }}
+    </p>
+  {{/if}}
 
-{{#if controller.length}}
-  <table>
-    <thead>
-      <tr>
-        <th>
-          Logo
-        </th>
-        <th>
-          <a href="#" {{action 'sortBy' 'name'}}>Team</a>
-        </th>
-        <th>
-          <a href="#" {{action 'sortBy' 'conference.name'}}>Conference</a>
-        </th>
-        {{#if session.isAuthenticated}}
-          <th>
-            Actions
-          </th>
-        {{/if}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each team in controller}}
-        <tr>
-          <td>
-            <img {{bind-attr src="team.logo" alt="team.name"}} />
-          </td>
-          <td>
-            {{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}
-          </td>
-          <td>
-            {{team.conference.name}}
-          </td>
-          {{#if session.isAuthenticated}}
-            <td>
-              {{link-to "Edit" "teams.edit" team}}
-              <a href="#" {{action 'remove' team}}>Remove</a>
-            </td>
-          {{/if}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <p id="blankslate">
-    No Teams found
-  </p>
-{{/if}}
+  {{team-table
+    items=this
+    removeAction="remove"
+  }}
+</div>

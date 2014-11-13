@@ -1,55 +1,14 @@
-<h1>Matches list</h1>
+<div class="row">
+  <h1>Matches</h1>
 
-{{#if session.isAuthenticated}}
-  <p>
-    {{link-to "New Match" "matches.new" }}
-  </p>
-{{/if}}
+  {{#if session.isAuthenticated}}
+    <p>
+      {{link-to "New Match" "matches.new" }}
+    </p>
+  {{/if}}
 
-{{#if controller.length}}
-  <table>
-    <thead>
-      <tr>
-        <th>
-          Date
-        </th>
-        <th>
-          Home
-        </th>
-        <th>
-          Away
-        </th>
-        {{#if session.isAuthenticated}}
-          <th>
-            Actions
-          </th>
-        {{/if}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each match in controller}}
-        <tr>
-          <td>
-            {{#link-to 'matches.show' match}}{{match.formattedDate}}{{/link-to}}
-          </td>
-          <td>
-            {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
-          </td>
-          <td>
-            {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
-          </td>
-          {{#if session.isAuthenticated}}
-            <td>
-              {{link-to "Edit" "matches.edit" match}}
-              <a href="#" {{action 'remove' match}}>Remove</a>
-            </td>
-          {{/if}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <p id="blankslate">
-    No Matches found
-  </p>
-{{/if}}
+  {{match-table
+    items=this
+    removeAction="remove"
+  }}
+</div>

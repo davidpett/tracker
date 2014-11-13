@@ -8,5 +8,7 @@ export default DS.Model.extend({
     inverse: null
   }),
   name: DS.attr('string'),
-  players: DS.hasMany('player', {async: true})
+  players: DS.hasMany('player', {async: true}),
+
+  defaultLogo: '/assets/images/logo__default--team.png'
 });

@@ -1,17 +1,28 @@
-<header>
-  <ul>
-    <li>{{link-to 'Matches' 'matches'}}</li>
-    <li>{{link-to 'Teams' 'teams'}}</li>
-    <li>{{link-to 'Players' 'players'}}</li>
-    <li>
-      {{#if session.isAuthenticated}}
-        <a href="#" {{action 'logout'}}>Logout</a>
-      {{else}}
-        <a href="#" {{action 'login'}}>Login</a>
-      {{/if}}
-    </li>
-  </ul>
-</header>
+<nav class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      {{#list-link}}
+        {{link-to 'Matches' 'matches'}}
+      {{/list-link}}
+      {{#list-link}}
+        {{link-to 'Teams' 'teams'}}
+      {{/list-link}}
+      {{#list-link}}
+        {{link-to 'Players' 'players'}}
+      {{/list-link}}
+    </ul>
+
+    <ul class="right">
+      <li>
+        {{#if session.isAuthenticated}}
+          <a href="#" {{action 'logout'}}>Logout</a>
+        {{else}}
+          <a href="#" {{action 'login'}}>Login</a>
+        {{/if}}
+      </li>
+    </ul>
+  </section>
+</nav>
 
 {{liquid-outlet}}
 

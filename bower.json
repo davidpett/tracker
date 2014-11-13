@@ -17,6 +17,7 @@
     "firebase": "~2.0.2",
     "ember-pikaday": "~0.1.7",
     "ic-autocomplete": "~0.2.0",
-    "pikaday-time": "~1.2.3"
+    "pikaday-time": "~1.2.3",
+    "foundation": "~5.4.7"
   }
 }

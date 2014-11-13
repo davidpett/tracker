@@ -1,39 +1,49 @@
-<table>
-  <tr>
-    <th>
-      <a href="#" {{action 'sortBy' 'number'}}>Number</a>
-    </th>
-    <th>
-      <a href="#" {{action 'sortBy' 'lastName'}}>Last Name</a>
-    </th>
-    <th>
-      <a href="#" {{action 'sortBy' 'firstName'}}>First Name</a>
-    </th>
-    {{#if hasTeam}}
-      <th>
-        <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
-      </th>
-    {{/if}}
-    {{#if session.isAuthenticated}}
-      <th>
-        Actions
-      </th>
-    {{/if}}
-  </tr>
-  {{#each player in sortedPlayers}}
+{{#if items.length}}
+  <table class="small-12">
     <tr>
-      <td>{{player.number}}</td>
-      <td>{{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}</td>
-      <td>{{player.firstName}}</td>
+      <th>
+        <a href="#" {{action 'sortBy' 'number'}}>Number</a>
+      </th>
+      <th>
+        <a href="#" {{action 'sortBy' 'lastName'}}>Last Name</a>
+      </th>
+      <th>
+        <a href="#" {{action 'sortBy' 'firstName'}}>First Name</a>
+      </th>
       {{#if hasTeam}}
-        <td>{{player.team.name}}</td>
+        <th>
+          <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
+        </th>
       {{/if}}
       {{#if session.isAuthenticated}}
-        <td>
-          {{link-to 'Edit' 'players.edit' player}}
-          <a href="#" {{action 'remove' player}}>Remove</a>
-        </td>
+        <th>
+          Actions
+        </th>
       {{/if}}
     </tr>
-  {{/each}}
-</table>
+    {{#each player in sortedItems}}
+      <tr>
+        <td>{{player.number}}</td>
+        <td>{{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}</td>
+        <td>{{player.firstName}}</td>
+        {{#if hasTeam}}
+          <td>{{#link-to 'teams.show' player.team}}{{player.team.name}}{{/link-to}}</td>
+        {{/if}}
+        {{#if session.isAuthenticated}}
+          <td>
+            <ul class="button-group round">
+              <li>{{link-to 'Edit' 'players.edit' player classNames="tiny button secondary"}}</li>
+              {{#if removeAction}}
+                <li>
+                  <a href="#" {{action 'remove' player}} class="tiny button alert">Remove</a>
+                </li>
+              {{/if}}
+            </ul>
+          </td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </table>
+{{else}}
+  no players
+{{/if}}

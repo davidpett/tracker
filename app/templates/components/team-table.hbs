@@ -1,0 +1,55 @@
+{{#if items}}
+  <table class="small-12">
+    <thead>
+      <tr>
+        <th>
+          Logo
+        </th>
+        <th>
+          <a href="#" {{action 'sortBy' 'name'}}>Team</a>
+        </th>
+        <th>
+          <a href="#" {{action 'sortBy' 'conference.name'}}>Conference</a>
+        </th>
+        {{#if session.isAuthenticated}}
+          <th>
+            Actions
+          </th>
+        {{/if}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each team in sortedItems}}
+        <tr>
+          <td>
+            {{#if team.logo}}
+              <img {{bind-attr src="team.logo" alt="team.name"}} />
+            {{else}}
+              <img {{bind-attr src="team.defaultLogo" alt="team.name"}} />
+            {{/if}}
+          </td>
+          <td>
+            {{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}
+          </td>
+          <td>
+            {{team.conference.name}}
+          </td>
+          {{#if session.isAuthenticated}}
+            <td>
+              <ul class="button-group round">
+                <li>{{link-to 'Edit' 'teams.edit' team classNames="tiny button secondary"}}</li>
+                {{#if removeAction}}
+                  <li>
+                    <a href="#" {{action 'remove' team}} class="tiny button alert">Remove</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  no teams
+{{/if}}

@@ -1,61 +1,15 @@
-<h1>Players list</h1>
+<div class="row">
+  <h1>Players</h1>
 
-{{#if session.isAuthenticated}}
-  <p>
-    {{link-to "New Player" "players.new" }}
-  </p>
-{{/if}}
+  {{#if session.isAuthenticated}}
+    <p>
+      {{link-to "New Player" "players.new" }}
+    </p>
+  {{/if}}
 
-{{#if controller.length}}
-  <table>
-    <thead>
-      <tr>
-        <th>
-          <a href="#" {{action 'sortBy' 'lastName'}}>Last name</a>
-        </th>
-        <th>
-          <a href="#" {{action 'sortBy' 'firstName'}}>First name</a>
-        </th>
-        <th>
-          <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
-        </th>
-        <th>
-          <a href="#" {{action 'sortBy' 'number'}}>Number</a>
-        </th>
-        {{#if session.isAuthenticated}}
-          <th>
-            Actions
-          </th>
-        {{/if}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each player in controller}}
-        <tr>
-          <td>
-            {{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}
-          </td>
-          <td>
-            {{player.firstName}}
-          </td>
-          <td>
-            {{#link-to 'teams.show' player.team}}{{player.team.name}}{{/link-to}}
-          </td>
-          <td>
-            {{player.number}}
-          </td>
-          {{#if session.isAuthenticated}}
-            <td>
-              {{link-to "Edit" "players.edit" player}}
-              <a href="#" {{action 'remove' player}}>Remove</a>
-            </td>
-          {{/if}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <p id="blankslate">
-    No Players found
-  </p>
-{{/if}}
+  {{player-table
+    items=this
+    hasTeam=true
+    removeAction="remove"
+  }}
+</div>

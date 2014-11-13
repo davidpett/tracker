@@ -1,26 +1,24 @@
-<p>
-  {{link-to "Player list" "players.index" }}
-</p>
-
-{{#if session.isAuthenticated}}
-  <p>
-    {{link-to "Edit" "players.edit" this}}
-  </p>
-{{/if}}
-
-<h1>
-  {{#if headshot}}
-    <img {{bind-attr src="headshot" alt="name"}} />
+<div class="row">
+  {{#if session.isAuthenticated}}
+    <p>
+      {{link-to "Edit" "players.edit" this}}
+    </p>
   {{/if}}
-  {{name}}
-</h1>
 
-<p>
-  <strong>Team:</strong>
-  <span>{{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}</span>
-</p>
+  <h1>
+    {{#if headshot}}
+      <img {{bind-attr src="headshot" alt="name"}} />
+    {{/if}}
+    {{name}}
+  </h1>
 
-<p>
-  <strong>Number:</strong>
-  <span>{{number}}</span>
-</p>
+  <p>
+    <strong>Team:</strong>
+    <span>{{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}</span>
+  </p>
+
+  <p>
+    <strong>Number:</strong>
+    <span>{{number}}</span>
+  </p>
+</div>
