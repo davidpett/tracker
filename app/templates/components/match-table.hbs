@@ -1,46 +1,50 @@
 {{#if items.length}}
   <table class="small-12">
-    <tr>
-      <th>
-        <a href="#" {{action 'sortBy' 'date'}}>Date</a>
-      </th>
-      <th>
-        <a href="#" {{action 'sortBy' 'home.name'}}>Home</a>
-      </th>
-      <th>
-        <a href="#" {{action 'sortBy' 'away.name'}}>Away</a>
-      </th>
-      {{#if session.isAuthenticated}}
-        <th>
-          Actions
-        </th>
-      {{/if}}
-    </tr>
-    {{#each match in sortedItems}}
+    <thead>
       <tr>
-        <td>
-          {{#link-to 'matches.show' match}}{{match.formattedDate}}{{/link-to}}
-        </td>
-        <td>
-          {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
-        </td>
-        <td>
-          {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
-        </td>
+        <th>
+          <a href="#" {{action 'sortBy' 'date'}}>Date</a>
+        </th>
+        <th>
+          <a href="#" {{action 'sortBy' 'home.name'}}>Home</a>
+        </th>
+        <th>
+          <a href="#" {{action 'sortBy' 'away.name'}}>Away</a>
+        </th>
         {{#if session.isAuthenticated}}
-          <td>
-            <ul class="button-group round">
-              <li>{{link-to 'Edit' 'matches.edit' match classNames="tiny button secondary"}}</li>
-              {{#if removeAction}}
-                <li>
-                  <a href="#" {{action 'remove' match}} class="tiny button alert">Remove</a>
-                </li>
-              {{/if}}
-            </ul>
-          </td>
+          <th>
+            Actions
+          </th>
         {{/if}}
       </tr>
-    {{/each}}
+    </thead>
+    <tbody>
+      {{#each match in sortedItems}}
+        <tr>
+          <td>
+            {{#link-to 'matches.show' match}}{{match.formattedDate}}{{/link-to}}
+          </td>
+          <td>
+            {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
+          </td>
+          <td>
+            {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
+          </td>
+          {{#if session.isAuthenticated}}
+            <td>
+              <ul class="button-group round">
+                <li>{{link-to 'Edit' 'matches.edit' match classNames="tiny button secondary"}}</li>
+                {{#if removeAction}}
+                  <li>
+                    <a href="#" {{action 'remove' match}} class="tiny button alert">Remove</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
   </table>
 {{else}}
   no matches
