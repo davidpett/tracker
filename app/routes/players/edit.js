@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import SaveModelMixin from '../../mixins/save-model-mixin';
-import AuthenticatedRouteMixin from '../../mixins/authenticated-route-mixin';
+import SaveModelMixin from '../../mixins/save-model';
+import AuthenticatedRouteMixin from '../../mixins/authenticated-route';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, SaveModelMixin, {
 });

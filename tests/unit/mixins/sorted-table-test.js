@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import SortedTableMixinMixin from 'tracker/mixins/sorted-table-mixin';
+import SortedTableMixinMixin from 'tracker/mixins/sorted-table';
 
 module('SortedTableMixinMixin');
 

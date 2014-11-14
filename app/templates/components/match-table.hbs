@@ -3,13 +3,34 @@
     <thead>
       <tr>
         <th>
-          <a href="#" {{action 'sortBy' 'date'}}>Date</a>
+          <a href="#" {{action 'sortBy' 'date'}}>
+            {{sort-indicator
+              label="Date"
+              value="date"
+              sortDirection=sortDirection
+              sortProperty=sortProperty
+            }}
+          </a>
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'home.name'}}>Home</a>
+          <a href="#" {{action 'sortBy' 'home.name'}}>
+            {{sort-indicator
+              label="Home"
+              value="home.name"
+              sortDirection=sortDirection
+              sortProperty=sortProperty
+            }}
+          </a>
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'away.name'}}>Away</a>
+          <a href="#" {{action 'sortBy' 'away.name'}}>
+            {{sort-indicator
+              label="Away"
+              value="away.name"
+              sortDirection=sortDirection
+              sortProperty=sortProperty
+            }}
+          </a>
         </th>
         {{#if sessionService.isAuthenticated}}
           <th>

@@ -16,7 +16,7 @@ export default Ember.Mixin.create({
       this.sendAction('removeAction', value);
     },
     sortBy: function(value) {
-      if (value !== this.get('sortProperty') && this.get('sortDirection') !== 'asc') {
+      if (value !== this.get('sortProperty')) {
         this.setProperties({
           sortProperty: value,
           sortDirection: 'asc'

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixinMixin from 'tracker/mixins/authenticated-route-mixin';
+import AuthenticatedRouteMixinMixin from 'tracker/mixins/authenticated-route';
 
 module('AuthenticatedRouteMixinMixin');
 
