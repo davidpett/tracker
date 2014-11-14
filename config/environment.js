@@ -41,7 +41,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/tracker';
+    ENV.baseURL = '/tracker/';
   }
 
   return ENV;

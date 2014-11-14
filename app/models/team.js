@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import ENV from './../config/environment';
 
 export default DS.Model.extend({
   conference: DS.belongsTo('conference', {async: true}),
@@ -10,5 +11,5 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   players: DS.hasMany('player', {async: true}),
 
-  defaultLogo: '/assets/images/logo__default--team.png'
+  defaultLogo: ENV.baseURL + 'assets/images/logo__default--team.png'
 });
