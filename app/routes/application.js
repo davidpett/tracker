@@ -24,7 +24,7 @@ export default Ember.Route.extend({
       this.controllerFor('application').set('login', true);
     },
     logout: function() {
-      this.get('session').logout();
+      this.get('sessionService').logout();
     }
   }
 });

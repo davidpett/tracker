@@ -9,9 +9,9 @@ export default Ember.ObjectController.extend({
   teams: null,
 
   sessionDidChange: function() {
-    if (Ember.isEmpty(this.get('session.isAuthenticated'))) {
+    if (Ember.isEmpty(this.get('sessionService.isAuthenticated'))) {
       var currentRouteName = this.get('currentRouteName');
       this.transitionToRoute(currentRouteName.split('.')[0]);
     }
-  }.observes('session.isAuthenticated')
+  }.observes('sessionService.isAuthenticated')
 });

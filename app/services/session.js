@@ -5,7 +5,7 @@ import ENV from './../config/environment';
 
 var firebase = new Firebase('https://' + ENV.firebase_instance + '.firebaseio.com');
 
-var session = Ember.Object.extend({
+export default Ember.Object.extend({
   isAuthenticated: null,
 
 
@@ -43,13 +43,3 @@ var session = Ember.Object.extend({
     firebase.unauth();
   }
 });
-
-export default {
-  name: 'session',
-  initialize: function(container, app) {
-    app.register('session:main', session, {singleton: true});
-    app.inject('component', 'session', 'session:main');
-    app.inject('controller', 'session', 'session:main');
-    app.inject('route', 'session', 'session:main');
-  }
-};

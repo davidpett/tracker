@@ -22,7 +22,7 @@ export default Ember.Component.extend({
         });
       }
 
-      that.get('session').login(provider, {
+      that.get('sessionService').login(provider, {
         email: that.get('email'),
         password: that.get('password')
       }).then(function() {

@@ -1,7 +1,7 @@
 <div class="row">
   <h1>Matches</h1>
 
-  {{#if session.isAuthenticated}}
+  {{#if sessionService.isAuthenticated}}
     <p>
       {{link-to "New Match" "matches.new" classNames="button tiny"}}
     </p>

@@ -11,7 +11,7 @@
         <th>
           <a href="#" {{action 'sortBy' 'away.name'}}>Away</a>
         </th>
-        {{#if session.isAuthenticated}}
+        {{#if sessionService.isAuthenticated}}
           <th>
             Actions
           </th>
@@ -30,7 +30,7 @@
           <td>
             {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
           </td>
-          {{#if session.isAuthenticated}}
+          {{#if sessionService.isAuthenticated}}
             <td>
               <ul class="button-group">
                 <li>{{link-to 'Edit' 'matches.edit' match classNames="tiny button secondary"}}</li>

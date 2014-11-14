@@ -35,7 +35,7 @@
         </a>
       </li>
       <li>
-        {{#if session.isAuthenticated}}
+        {{#if sessionService.isAuthenticated}}
           <a href="#" {{action 'logout'}}>Logout</a>
         {{else}}
           <a href="#" {{action 'login'}}>Login</a>
