@@ -42,6 +42,9 @@ export default Ember.Component.extend({
         }
         console.log('error logging in', error);
       });
+    },
+    dismiss: function() {
+      this.sendAction('dismiss');
     }
   }
 });

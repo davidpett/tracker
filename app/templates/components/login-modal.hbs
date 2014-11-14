@@ -1,24 +1,30 @@
-<form {{action 'login' 'email'}}>
-  {{input
-    type="text"
-    value=email
-    placeholder="email"
-  }}
-  {{input
-    type="password"
-    value=password
-  }}
-  <input type="submit" value="Login" class="button">
+<form {{action 'login' 'email' on="submit"}} class="row">
+  <div {{bind-attr class=":large-6 :columns emailError:error"}}>
+    <label>Email
+      {{input
+        type="text"
+        value=email
+        placeholder="email"
+        classNameBindings="emailError:error"
+      }}
+    </label>
+    {{#if emailError}}
+      <small class="error">{{emailError}}</small>
+    {{/if}}
+  </div>
+  <div {{bind-attr class=":large-6 :columns passwordError:error"}}>
+    <label>Password
+      {{input
+        type="password"
+        value=password
+      }}
+    </label>
+    {{#if passwordError}}
+      <small class="error">{{passwordError}}</small>
+    {{/if}}
+  </div>
+  <div class="large-12 columns">
+    <input type="submit" value="Login" class="button tiny">
+    <a href="#" {{action 'dismiss'}} class="button tiny secondary">Cancel</a>
+  </div>
 </form>
-
-<ul>
-  {{#if error}}
-    <li>{{error}}</li>
-  {{/if}}
-  {{#if emailError}}
-    <li>{{emailError}}</li>
-  {{/if}}
-  {{#if passwordError}}
-    <li>{{passwordError}}</li>
-  {{/if}}
-</ul>
