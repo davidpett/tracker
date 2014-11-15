@@ -6,13 +6,13 @@ import ENV from './../config/environment';
 var firebase = new Firebase('https://' + ENV.firebase_instance + '.firebaseio.com');
 
 export default Ember.Object.extend({
-  isAuthenticated: null,
-
+  isAuthenticated: Ember.computed.bool('authData'),
+  authData: null,
 
   init: function() {
     var that = this;
     firebase.onAuth(function(authData) {
-      that.set('isAuthenticated', authData);
+      that.set('authData', authData);
     });
 
     firebase.getAuth();
