@@ -1,8 +1,10 @@
 {{label}}
 {{#if isSortedByProp}}
-  {{#if isSortedAsc}}
-    up
-  {{else}}
-    down
-  {{/if}}
+  <span class="right">
+    {{#if isSortedAsc}}
+      &uarr;
+    {{else}}
+      &darr;
+    {{/if}}
+  </span>
 {{/if}}

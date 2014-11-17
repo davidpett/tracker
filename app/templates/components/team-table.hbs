@@ -6,10 +6,20 @@
           Logo
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'name'}}>Team</a>
+          {{sort-indicator
+            label="Team"
+            value="name"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'conference.name'}}>Conference</a>
+          {{sort-indicator
+            label="Conference"
+            value="conference.name"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         {{#if sessionService.isAuthenticated}}
           <th>
@@ -29,7 +39,7 @@
             {{/if}}
           </td>
           <td>
-            {{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}
+            {{link-to team.name 'teams.show' team}}
           </td>
           <td>
             {{team.conference.name}}

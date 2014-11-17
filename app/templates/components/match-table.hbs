@@ -3,34 +3,28 @@
     <thead>
       <tr>
         <th>
-          <a href="#" {{action 'sortBy' 'date'}}>
-            {{sort-indicator
-              label="Date"
-              value="date"
-              sortDirection=sortDirection
-              sortProperty=sortProperty
-            }}
-          </a>
+          {{sort-indicator
+            label="Date"
+            value="date"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'home.name'}}>
-            {{sort-indicator
-              label="Home"
-              value="home.name"
-              sortDirection=sortDirection
-              sortProperty=sortProperty
-            }}
-          </a>
+          {{sort-indicator
+            label="Home"
+            value="home.name"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'away.name'}}>
-            {{sort-indicator
-              label="Away"
-              value="away.name"
-              sortDirection=sortDirection
-              sortProperty=sortProperty
-            }}
-          </a>
+          {{sort-indicator
+            label="Away"
+            value="away.name"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         {{#if sessionService.isAuthenticated}}
           <th>
@@ -43,13 +37,13 @@
       {{#each match in sortedItems}}
         <tr>
           <td>
-            {{#link-to 'matches.show' match}}{{match.formattedDate}}{{/link-to}}
+            {{link-to match.formattedDate 'matches.show' match}}
           </td>
           <td>
-            {{#link-to 'teams.show' match.home}}{{match.home.name}}{{/link-to}}
+            {{link-to match.home.name 'teams.show' match.home}}
           </td>
           <td>
-            {{#link-to 'teams.show' match.away}}{{match.away.name}}{{/link-to}}
+            {{link-to match.away.name 'teams.show' match.away}}
           </td>
           {{#if sessionService.isAuthenticated}}
             <td>

@@ -20,20 +20,16 @@ export default Ember.Object.extend({
 
 
   login: function(provider, user) {
+    var that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-
-      function handleAuth(error, authData) {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(authData);
-        }
-      }
-
+      console.log('dhdhd');
       if (provider === 'email') {
-        firebase.authWithPassword(user, handleAuth);
+        firebase.authWithPassword(user, function(error, authData) {
+          console.log('user', user, error, authData);
+          that._handleAuth(error, authData);
+        });
       } else {
-        firebase.authWithOAuthPopup(provider, handleAuth, {
+        firebase.authWithOAuthPopup(provider, that._handleAuth, {
           scope: 'email'
         });
       }
@@ -41,5 +37,20 @@ export default Ember.Object.extend({
   },
   logout: function() {
     firebase.unauth();
+  },
+
+  _handleAuth: function(error, authData) {
+    console.log('hello?', error, authData);
+    if (error) {
+      console.error('firebase:authentication:', error);
+      if (error.code === 'TRANSPORT_UNAVAILABLE') {
+        firebase.authWithOAuthRedirect(provider, handleAuth);
+      } else {
+        reject(error);
+      }
+    } else {
+      // authData will be automatically populated
+      resolve(authData);
+    }
   }
 });

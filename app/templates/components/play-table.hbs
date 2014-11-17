@@ -1,0 +1,44 @@
+{{#if items.length}}
+  <table class="small-12">
+    <thead>
+      <tr>
+        <th>
+          {{sort-indicator
+            label="Body"
+            value="body"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
+        </th>
+        {{#if sessionService.isAuthenticated}}
+          <th>
+            Actions
+          </th>
+        {{/if}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each play in sortedItems}}
+        <tr>
+          <td>
+            {{play.body}}
+          </td>
+          {{#if sessionService.isAuthenticated}}
+            <td>
+              <ul class="button-group">
+                <li>{{link-to 'Edit' 'plays.edit' match classNames="tiny button secondary"}}</li>
+                {{#if removeAction}}
+                  <li>
+                    <a href="#" {{action 'remove' play}} class="tiny button alert">Remove</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  no plays
+{{/if}}

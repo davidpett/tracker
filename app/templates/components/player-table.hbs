@@ -3,17 +3,37 @@
     <thead>
       <tr>
         <th>
-          <a href="#" {{action 'sortBy' 'number'}}>Number</a>
+          {{sort-indicator
+            label="Number"
+            value="number"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'lastName'}}>Last Name</a>
+          {{sort-indicator
+            label="Last Name"
+            value="lastName"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         <th>
-          <a href="#" {{action 'sortBy' 'firstName'}}>First Name</a>
+          {{sort-indicator
+            label="First Name"
+            value="firstName"
+            sortDirection=sortDirection
+            sortProperty=sortProperty
+          }}
         </th>
         {{#if hasTeam}}
           <th>
-            <a href="#" {{action 'sortBy' 'team.name'}}>Team</a>
+            {{sort-indicator
+              label="Team"
+              value="team.name"
+              sortDirection=sortDirection
+              sortProperty=sortProperty
+            }}
           </th>
         {{/if}}
         {{#if sessionService.isAuthenticated}}
@@ -27,10 +47,10 @@
       {{#each player in sortedItems}}
         <tr>
           <td>{{player.number}}</td>
-          <td>{{#link-to 'players.show' player}}{{player.lastName}}{{/link-to}}</td>
+          <td>{{link-to player.lastName 'players.show' player}}</td>
           <td>{{player.firstName}}</td>
           {{#if hasTeam}}
-            <td>{{#link-to 'teams.show' player.team}}{{player.team.name}}{{/link-to}}</td>
+            <td>{{link-to player.team.name 'teams.show' player.team}}</td>
           {{/if}}
           {{#if sessionService.isAuthenticated}}
             <td>

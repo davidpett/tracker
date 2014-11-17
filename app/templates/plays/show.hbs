@@ -1,0 +1,12 @@
+<div class="row">
+  {{#if sessionService.isAuthenticated}}
+    <p>
+      {{link-to "Edit" "play.edit" this}}
+    </p>
+  {{/if}}
+
+  <p>
+    <strong>Body:</strong>
+    <span>{{body}}</span>
+  </p>
+</div>

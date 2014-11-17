@@ -14,11 +14,19 @@
 
   <p>
     <strong>Home:</strong>
-    <span>{{#link-to 'teams.show' home}}{{home.name}}{{/link-to}}</span>
+    <span>{{link-to home.name 'teams.show' home}}</span>
   </p>
 
   <p>
     <strong>Away:</strong>
-    <span>{{#link-to 'teams.show' away}}{{away.name}}{{/link-to}}</span>
+    <span>{{link-to away.name 'teams.show' away}}</span>
   </p>
+
+  {{#if plays}}
+    {{#each play in plays}}
+      {{play.body}}
+    {{/each}}
+  {{else}}
+    {{link-to 'add a play' 'plays.new' this}}
+  {{/if}}
 </div>

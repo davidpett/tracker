@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'span',
+  tagName: 'a',
 
   label: null,
   value: null,
+  sortAction: 'sortBy',
   sortDirection: null,
   sortProperty: null,
 
@@ -15,4 +16,8 @@ export default Ember.Component.extend({
   isSortedAsc: function() {
     return this.get('sortDirection') === 'asc';
   }.property('sortDirection'),
+
+  click: function() {
+    this.sendAction('sortAction', this.get('value'));
+  }
 });

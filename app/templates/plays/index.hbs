@@ -1,0 +1,14 @@
+<div class="row">
+  <h1>Plays</h1>
+
+  {{#if sessionService.isAuthenticated}}
+    <p>
+      {{link-to "New Play" "plays.new" classNames="button tiny"}}
+    </p>
+  {{/if}}
+
+  {{play-table
+    items=this
+    removeAction="remove"
+  }}
+</div>
